@@ -7,4 +7,6 @@ const eventRouter=express.Router();
       eventRouter.put('/edit',jsonParser,eventController.edit);
       eventRouter.delete('/delete',jsonParser,eventController.delete);
       eventRouter.get('/list',eventController.list);
+	  // eventRouter.get('/id',jsonParser,eventController.id);
+	  eventRouter.get('/',eventController.id);
 module.exports=eventRouter;

@@ -12,14 +12,17 @@ app.use(function(req, res, next) {
   next();
 });
 
-
 app.use('/',homeRouter);
 app.use('/event',eventRouter);
 app.use((req,res)=>res.status(404).send('а вот такой страницы нету на сервере'));
 
 
-mongoose.connect('mongodb://localhost/asmi',((err)=>{
+mongoose.connect('mongodb://localhost/asmi',
+  {
+      useNewUrlParser: true,
+     useUnifiedTopology: true
+  },
+				((err)=>{
                  if(err) console.log('Не могу подключиться к БД');
                  app.listen(PORT,()=>console.log(`Сервер запущен на порту ${PORT}`));
                 }));
-
